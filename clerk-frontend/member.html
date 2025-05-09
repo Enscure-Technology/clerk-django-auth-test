@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EnscureX • Members</title>
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+
+<body>
+  <aside>
+    <h2>🔐 EnscureX</h2>
+    <a href="/">Dashboard</a>
+    <a href="/settings.html">Settings</a>
+    <a href="/members.html">Members</a>
+    <div id="user-button"></div>
+  </aside>
+
+  <main>
+    <h1>Organization Members</h1>
+
+    <div id="auth-container">Loading…</div>
+
+    <div id="controls" style="display:none;">
+      <!-- example controls specific to members -->
+      <button id="load-data">Load Members List</button>
+      <pre id="output">Waiting…</pre>
+    </div>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

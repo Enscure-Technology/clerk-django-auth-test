@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SAML Configuration</title>
+</head>
+<body>
+  <h1>🔐 SAML Settings</h1>
+  <div id="auth-container"></div>
+  <div id="controls" style="display: none;">
+    <button id="load-saml">🔄 Load SAML Connections</button>
+    <button onclick="Clerk.signOut()">🚪 Sign Out</button>
+  </div>
+  <pre id="output">Waiting...</pre>
+
+  <script type="module" src="/src/saml.js"></script>
+</body>
+</html>

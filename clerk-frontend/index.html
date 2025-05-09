@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EnscureX • Dashboard</title>
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+
+<body>
+  <!-- ▸ Sidebar -->
+  <aside>
+    <h2>🔐 EnscureX</h2>
+    <a href="/">Dashboard</a>
+    <a href="/settings.html">Settings</a>
+    <a href="/members.html">Members</a>
+    <div id="user-button"></div> <!-- Clerk UserButton mounts here -->
+  </aside>
+
+  <!-- ▸ Main content -->
+  <main>
+    <h1>Welcome to Admin Portal</h1>
+
+    <!-- Clerk renders sign-in here, or we replace it with a banner -->
+    <div id="auth-container">Loading…</div>
+    <!-- Hidden until user is signed-in -->
+    <div id="controls" style="display:none;">
+
+      <button id="load-data">Load Profile Info</button>
+      <pre id="output">Waiting…</pre>
+    </div>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

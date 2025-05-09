@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EnscureX • Settings</title>
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+
+<body>
+  <aside>
+    <h2>🔐 EnscureX</h2>
+    <a href="/">Dashboard</a>
+    <a href="/settings.html">Settings</a>
+    <a href="/members.html">Members</a>
+    <div id="user-button"></div>
+  </aside>
+
+  <main>
+    <h1>Organization Settings</h1>
+
+    <div id="auth-container">Loading…</div>
+
+    <div id="controls" style="display:none;">
+
+      <!-- 🔹 Org Members -->
+      <section>
+        <h2>Organization Members</h2>
+        <button id="load-members">Load Members</button>
+        <pre id="members-output">Waiting…</pre>
+      </section>
+
+      <!-- 🔐 SSO Configuration (Super Admin Only) -->
+      <section id="sso-section" style="display:none;">
+        <h2>SSO Configuration</h2>
+
+        <button id="load-sso">Load SAML Connections</button>
+        <pre id="sso-output">Waiting…</pre>
+
+        <h3>Add New SAML Connection</h3>
+        <input id="sso-name" placeholder="Connection Name" />
+        <input id="sso-domain" placeholder="Domain (e.g. example.com)" />
+        <input id="sso-metadata-url" placeholder="Metadata URL" />
+        <button id="add-sso">Create Connection</button>
+
+
+
+      </section>
+
+      <section>
+        <h3>Add Break-Glass User</h3>
+<select id="break-glass-user-select">
+  <option disabled selected>Select member email</option>
+</select>
+<button id="add-break-glass">Add</button>
+        <h2>🛠 Break-Glass Users</h2>
+        <button id="load-break-glass">Load Break-Glass Users</button>
+        <pre id="break-glass-output">Waiting…</pre>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

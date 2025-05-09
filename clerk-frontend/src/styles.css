@@ -1,0 +1,98 @@
+/* ────────────── 0. TOKENS ────────────── */
+:root {
+  --font-body: "Segoe UI", system-ui, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, monospace;
+
+  --c-bg:       #f4f6f8;
+  --c-surface:  #ffffff;
+  --c-border:   #e2e8f0;
+
+  --c-text:       #2d3748;
+  --c-text-light: #4a5568;
+  --c-primary:       #3182ce;
+  --c-primary-hover: #2b6cb0;
+
+  --radius-s: 4px;
+  --shadow-s: 0 1px 3px rgba(0 0 0 / 0.08);
+}
+
+/* ────────────── 1. RESET / LAYOUT ────────────── */
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  font-family: var(--font-body);
+  background: var(--c-bg);
+  display: flex;
+}
+
+/* ────────────── 2. SIDEBAR ────────────── */
+aside {
+  width: 220px;
+  background: #1a202c;
+  color: #fff;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  height: 100vh;
+}
+aside h2   { margin: 0 0 1.8rem; font-size: 1.25rem; }
+aside a    {
+  color: #cbd5e0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+aside a:hover { color: #fff; }
+#user-button .cl-userButton-root { margin-top: auto; }
+
+/* ────────────── 3. MAIN PANE ────────────── */
+main {
+  flex: 1;
+  padding: 2rem 2.5rem;
+  overflow-y: auto;
+}
+main h1 { color: var(--c-text); margin-top: 0; }
+
+/* ────────────── 4. CARDS / PANELS ────────────── */
+.banner, #controls {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-s);
+  box-shadow: var(--shadow-s);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ────────────── 5. BUTTONS ────────────── */
+button {
+  padding: 0.6rem 1.25rem;
+  background: var(--c-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  font-size: 0.92rem;
+  transition: background 0.15s;
+}
+button.secondary {
+  background: #edf2f7;
+  color: var(--c-text-light);
+}
+button:hover            { background: var(--c-primary-hover); }
+button.secondary:hover  { background: #e2e8f0; }
+
+/* ────────────── 6. PRE / OUTPUT ────────────── */
+pre {
+  margin-top: 1rem;
+  background: #edf2f7;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-s);
+  padding: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 50vh;
+  overflow: auto;
+}
