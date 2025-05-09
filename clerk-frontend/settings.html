@@ -22,41 +22,127 @@
     <div id="auth-container">Loading…</div>
 
     <div id="controls" style="display:none;">
+      <!-- Tab Navigation -->
+      <div class="tabs">
+        <button class="tab-button active" data-tab="members">Organization Members</button>
+        <button class="tab-button" data-tab="sso">SSO Configuration</button>
+      </div>
 
-      <!-- 🔹 Org Members -->
-      <section>
-        <h2>Organization Members</h2>
-        <button id="load-members">Load Members</button>
-        <pre id="members-output">Waiting…</pre>
-      </section>
+      <!-- Members Tab -->
+      <div id="members-tab" class="tab-content active">
+        <section>
+          <h2>Organization Members</h2>
+          <button id="load-members">Load Members</button>
+          <pre id="members-output">Waiting…</pre>
+        </section>
+      </div>
 
-      <!-- 🔐 SSO Configuration (Super Admin Only) -->
-      <section id="sso-section" style="display:none;">
-        <h2>SSO Configuration</h2>
+      <!-- SSO Tab -->
+      <div id="sso-tab" class="tab-content">
+        <section id="sso-section" style="display:none;">
+          <div class="sso-header">
+            <h2>SSO Configuration</h2>
+            <div class="sso-actions">
+              <button id="load-sso" class="secondary-button">Load SAML Config</button>
+              <button id="add-connection" class="primary-button">Add New Connection</button>
+            </div>
+          </div>
+          
+          <!-- Existing SAML Connections -->
+          <div id="connections-list" class="connections-list">
+            <!-- Connections will be populated here -->
+          </div>
 
-        <button id="load-sso">Load SAML Connections</button>
-        <pre id="sso-output">Waiting…</pre>
+          <!-- Add/Edit SAML Connection Modal -->
+          <div id="sso-modal" class="modal">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 id="modal-title">Add New SAML Connection</h3>
+                <button class="close-modal">&times;</button>
+              </div>
+              
+              <form id="sso-form" class="sso-form">
+                <input type="hidden" id="connection-id" />
+                
+                <div class="form-section">
+                  <h4>Basic Information</h4>
+                  <div class="form-group">
+                    <label for="sso-name">Name</label>
+                    <input id="sso-name" name="name" type="text" placeholder="e.g. Corporate SSO" required />
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="sso-domain">Domain</label>
+                    <input id="sso-domain" name="domain" type="text" placeholder="e.g. example.com" required />
+                  </div>
+                </div>
 
-        <h3>Add New SAML Connection</h3>
-        <input id="sso-name" placeholder="Connection Name" />
-        <input id="sso-domain" placeholder="Domain (e.g. example.com)" />
-        <input id="sso-metadata-url" placeholder="Metadata URL" />
-        <button id="add-sso">Create Connection</button>
+                <div class="form-section">
+                  <h4>Identity Provider Configuration</h4>
+                
+                  <div class="form-group">
+                    <label for="sso-provider">Identity Provider</label>
+                    <select id="sso-provider" name="provider" required>
+                      <option value="entra">Microsoft Entra ID</option>
+                      <option value="okta">Okta</option>
+                      <option value="google">Google Workspace</option>
+                      <option value="custom" selected>Custom</option>
+                    </select>
+                  </div>
+                
+                  <div class="form-group">
+                    <label for="sso-metadata-url">App Federation Metadata URL</label>
+                    <input id="sso-metadata-url" name="metadata_url" type="url" placeholder="https://idp.example.com/metadata.xml" required />
+                  </div>
+                </div>
 
+                <div class="form-actions">
+                  <button type="submit" class="primary-button">Save Connection</button>
+                  <button type="button" class="secondary-button" onclick="closeModal('sso-modal')">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
 
-
-      </section>
-
-      <section>
-        <h3>Add Break-Glass User</h3>
-<select id="break-glass-user-select">
-  <option disabled selected>Select member email</option>
-</select>
-<button id="add-break-glass">Add</button>
-        <h2>🛠 Break-Glass Users</h2>
-        <button id="load-break-glass">Load Break-Glass Users</button>
-        <pre id="break-glass-output">Waiting…</pre>
-      </section>
+          <!-- Service Provider Configuration Modal -->
+          <div id="sp-config-modal" class="modal">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3>Service Provider Configuration</h3>
+                <button class="close-modal">&times;</button>
+              </div>
+              
+              <div class="sp-config">
+                <p class="config-description">Enter the following values into your Identity Provider to configure the connection.</p>
+                
+                <div class="config-item">
+                  <label>Reply URL (Assertion Consumer Service URL)</label>
+                  <div class="copy-field">
+                    <input type="text" id="sp-acs-url" readonly />
+                    <button class="copy-button" data-copy="sp-acs-url">Copy</button>
+                  </div>
+                </div>
+                
+                <div class="config-item">
+                  <label>Identifier (Entity ID)</label>
+                  <div class="copy-field">
+                    <input type="text" id="sp-entity-id" readonly />
+                    <button class="copy-button" data-copy="sp-entity-id">Copy</button>
+                  </div>
+                </div>
+                
+                <div class="config-item">
+                  <label>Metadata URL</label>
+                  <div class="copy-field">
+                    <input type="text" id="sp-metadata-url" readonly />
+                    <button class="copy-button" data-copy="sp-metadata-url">Copy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   </main>
 

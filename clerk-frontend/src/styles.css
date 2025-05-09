@@ -14,6 +14,12 @@
 
   --radius-s: 4px;
   --shadow-s: 0 1px 3px rgba(0 0 0 / 0.08);
+  
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
 }
 
 /* ────────────── 1. RESET / LAYOUT ────────────── */
@@ -30,13 +36,13 @@ aside {
   width: 220px;
   background: #1a202c;
   color: #fff;
-  padding: 2rem 1rem;
+  padding: var(--spacing-lg) var(--spacing-sm);
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: var(--spacing-md);
   height: 100vh;
 }
-aside h2   { margin: 0 0 1.8rem; font-size: 1.25rem; }
+aside h2   { margin: 0 0 var(--spacing-lg); font-size: 1.25rem; }
 aside a    {
   color: #cbd5e0;
   text-decoration: none;
@@ -49,10 +55,10 @@ aside a:hover { color: #fff; }
 /* ────────────── 3. MAIN PANE ────────────── */
 main {
   flex: 1;
-  padding: 2rem 2.5rem;
+  padding: var(--spacing-lg) var(--spacing-xl);
   overflow-y: auto;
 }
-main h1 { color: var(--c-text); margin-top: 0; }
+main h1 { color: var(--c-text); margin-top: 0; margin-bottom: var(--spacing-lg); }
 
 /* ────────────── 4. CARDS / PANELS ────────────── */
 .banner, #controls {
@@ -60,8 +66,8 @@ main h1 { color: var(--c-text); margin-top: 0; }
   border: 1px solid var(--c-border);
   border-radius: var(--radius-s);
   box-shadow: var(--shadow-s);
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 1.5rem;
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
 }
 
 /* ────────────── 5. BUTTONS ────────────── */
@@ -73,26 +79,311 @@ button {
   border-radius: var(--radius-s);
   cursor: pointer;
   font-size: 0.92rem;
-  transition: background 0.15s;
+  transition: all 0.15s;
 }
-button.secondary {
-  background: #edf2f7;
-  color: var(--c-text-light);
-}
-button:hover            { background: var(--c-primary-hover); }
-button.secondary:hover  { background: #e2e8f0; }
 
-/* ────────────── 6. PRE / OUTPUT ────────────── */
-pre {
-  margin-top: 1rem;
+.primary-button {
+  background: var(--c-primary);
+  color: white;
+  font-weight: 500;
+}
+
+.primary-button:hover {
+  background: var(--c-primary-hover);
+}
+
+.secondary-button {
   background: #edf2f7;
+  color: var(--c-text);
+}
+
+.secondary-button:hover {
+  background: #e2e8f0;
+}
+
+/* ────────────── 6. TABS ────────────── */
+.tabs {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--c-border);
+  padding-bottom: var(--spacing-xs);
+}
+
+.tab-button {
+  background: none;
+  color: var(--c-text-light);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-s) var(--radius-s) 0 0;
+}
+
+.tab-button:hover {
+  background: #edf2f7;
+  color: var(--c-text);
+}
+
+.tab-button.active {
+  background: var(--c-primary);
+  color: white;
+}
+
+.tab-content {
+  display: none;
+  margin-top: var(--spacing-md);
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* ────────────── 7. SSO CONFIGURATION ────────────── */
+.sso-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.sso-header h2 {
+  margin: 0;
+}
+
+.sso-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.connections-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.connection-item {
+  padding: var(--spacing-md);
   border: 1px solid var(--c-border);
   border-radius: var(--radius-s);
-  padding: 1rem;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  white-space: pre-wrap;
-  word-break: break-word;
-  max-height: 50vh;
-  overflow: auto;
+  background: var(--c-surface);
+}
+
+.connection-item h4 {
+  margin: 0 0 var(--spacing-xs) 0;
+  color: var(--c-text);
+  font-size: 1.1rem;
+}
+
+.connection-item h5 {
+  margin: var(--spacing-sm) 0 var(--spacing-xs);
+  color: var(--c-text);
+  font-size: 0.95rem;
+}
+
+.connection-item p {
+  margin: var(--spacing-xs) 0;
+  color: var(--c-text-light);
+  font-size: 0.9rem;
+}
+
+.connection-details {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm);
+  background: #f8fafc;
+  border-radius: var(--radius-s);
+}
+
+.connection-details h5 {
+  margin-top: 0;
+  color: var(--c-text);
+  font-size: 0.95rem;
+}
+
+.connection-actions {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--c-border);
+}
+
+/* ────────────── 8. MODAL ────────────── */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  border-radius: var(--radius-s);
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-header {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--c-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: var(--c-text);
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--c-text-light);
+  cursor: pointer;
+  padding: 0;
+}
+
+/* ────────────── 9. FORMS ────────────── */
+.sso-form {
+  padding: var(--spacing-md);
+}
+
+.form-section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-section h4 {
+  margin: 0 0 var(--spacing-sm) 0;
+  color: var(--c-text);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-sm);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  color: var(--c-text);
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: var(--spacing-xs);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-s);
+  font-size: 0.92rem;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-hint {
+  text-align: center;
+  color: var(--c-text-light);
+  margin: var(--spacing-xs) 0;
+}
+
+.form-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: flex-end;
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--c-border);
+}
+
+/* ────────────── 10. SP CONFIG ────────────── */
+.sp-config {
+  padding: var(--spacing-md);
+}
+
+.config-description {
+  color: var(--c-text-light);
+  margin-bottom: var(--spacing-md);
+}
+
+.config-item {
+  margin-bottom: var(--spacing-md);
+}
+
+.config-item label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  color: var(--c-text);
+  font-weight: 500;
+}
+
+.copy-field {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.copy-field input {
+  flex: 1;
+  padding: var(--spacing-xs);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-s);
+  font-size: 0.92rem;
+  background: #f8fafc;
+}
+
+.copy-button {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: #edf2f7;
+  color: var(--c-text);
+  white-space: nowrap;
+}
+
+.copy-button:hover {
+  background: #e2e8f0;
+}
+
+/* ────────────── 11. TOAST NOTIFICATIONS ────────────── */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 24px;
+  border-radius: var(--radius-s);
+  color: white;
+  font-size: 0.9rem;
+  z-index: 1100;
+  animation: slideIn 0.3s ease-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.toast.success {
+  background-color: #059669;
+}
+
+.toast.error {
+  background-color: #dc2626;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
